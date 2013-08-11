@@ -1,90 +1,71 @@
-SHObjectUserInfo
-==========
-[![Build Status](https://travis-ci.org/seivan/SHObjectUserInfo.png?branch=master)](https://travis-ci.org/seivan/SHObjectUserInfo)
-[![Version](http://cocoapod-badges.herokuapp.com/v/SHObjectUserInfo/badge.png)](http://cocoadocs.org/docsets/SHObjectUserInfo)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/SHObjectUserInfo/badge.png)](http://cocoadocs.org/docsets/SHObjectUserInfo)
+# SHInvocation
+
+[![Build Status](https://travis-ci.org/seivan/SHInvocation.png?branch=master)](https://travis-ci.org/seivan/SHInvocation)
+[![Version](http://cocoapod-badges.herokuapp.com/v/SHInvocation/badge.png)](http://cocoadocs.org/docsets/SHInvocation)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/SHInvocation/badge.png)](http://cocoadocs.org/docsets/SHInvocation)
 
 > This pod is used by [`SHFoundationAdditions`](https://github.com/seivan/SHFoundationAdditions) as part of many components covering to plug the holes missing from Foundation, UIKit, CoreLocation, GameKit, MapKit and other aspects of an iOS application's architecture.
 
 Overview
 --------
 
-SHObjectUserInfo is a category on top of NSObject to allow userInfo dictionary without swizzling. It's built on top of NSMapTable that works with weakToStrong references between an object and its userInfo. 
+SHInvocation is a category on top of NSInvocation to allow executing selectors with multiple 
 
-
-Swizzle & Junk free 
--------------------
-
-No developer psyches were harmed or killed for this. I've noticed other similar libraries all swizzle like there is no tomorrow. If the API can remains the same without Swizzle, **then don't Swizzle.**
-
-All in all; 50 loc for userInfo
-
-
-Installation
-------------
+##Installation
 
 ```ruby
-pod 'SHObjectUserInfo'
+pod 'SHInvocation'
 ```
 
-***
 
-Setup
------
+##Setup
 
 Put this either in specific classes or your project prefix file
 
 ```objective-c
-#import "NSObject+SHObjectUserInfo.h"
+#import "NSInvocation+SHInvocation.h"
 ```
 
 or
 
 ```objective-c
-#import "SHObjectUserInfo.h"
+#import "SHInvocation.h"
 ```
 
-Usage
------
+##API
+
 
 ```objective-c
-myObjectThatInheritedFromNSObject.sh_userInfo = [@{@"myKey" : mYValue} mutableCopy];
++(BOOL)SH_performInvocationOnTarget:(id)theTarget
+                       withSelector:(SEL)theSelector
+                       andArguments:(NSArray *)theArguments;
+```
+
+##USAGE
+
+```objective-c
+  NSString * firstArgument  = @"My first Argument";
+  NSArray  * secondArgument = @[firstArgument, firstArgument, firstArgument];
+  
+ BOOL didInvoke = [NSInvocation SH_performInvocationOnTarget:self withSelector:@selector(passTheFirstArgument:passTheSecondArgument:) andArguments:@[firstArgument, secondArgument]];
+  
+  NSParameterAssert(didInvoke);
+  NSParameterAssert([self.firstArgument  isEqualToString:firstArgument]);
+  NSParameterAssert([self.secondArgument isEqual:secondArgument]);
+
 ``` 
 
-If you're using [SHSegueBlocks](http://www.github.com/seivan/SHSegueBlocks)
-
-```objective-c
-[self SH_performSegueWithIdentifier:@"unwinder" withUserInfo:@{@"date" : [NSDate date]}];
-```
-
-In the destinationViewController
-
-```objective-c
-self.myDate = self.SH_userInfo[@"date"];
-```
-
-or
-
-```objective-c
-  [self SH_performSegueWithIdentifier:@"push" 
-        andDestionationViewController:^(UIViewController * theDestinationViewController) {
-
-    theDestinationViewController.SH_userInfo = myDictionary
-
-  }];
-
-```
 
 Contact
 -------
 
-If you end up using SHObjectUserInfo in a project, I'd love to hear about it.
+If you end up using SHInvocation in a project, I'd love to hear about it.
 
 email: [seivan.heidari@icloud.com](mailto:seivan.heidari@icloud.com)  
 twitter: [@seivanheidari](https://twitter.com/seivanheidari)
 
 ## License
 
-SHObjectUserInfo is © 2013 [Seivan](http://www.github.com/seivan) and may be freely
+SHInvocation is © 2013 [Seivan](http://www.github.com/seivan) and may be freely
 distributed under the [MIT license](http://opensource.org/licenses/MIT).
-See the [`LICENSE.md`](https://github.com/seivan/SHObjectUserInfo/blob/master/LICENSE.md) file.
+See the [`LICENSE.md`](https://github.com/seivan/SHInvocation/blob/master/LICENSE.md) file.
