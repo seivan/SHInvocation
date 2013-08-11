@@ -1,0 +1,14 @@
+PODS:
+  - SHInvocation (1.0.0)
+
+DEPENDENCIES:
+  - SHInvocation (from `../`)
+
+EXTERNAL SOURCES:
+  SHInvocation:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SHInvocation: 6030cbdc144e6a5f1775354e07f0be550d49a335
+
+COCOAPODS: 0.22.3
