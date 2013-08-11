@@ -47,7 +47,8 @@ or
   NSString * firstArgument  = @"My first Argument";
   NSArray  * secondArgument = @[firstArgument, firstArgument, firstArgument];
   
- BOOL didInvoke = [NSInvocation SH_performInvocationOnTarget:self withSelector:@selector(passTheFirstArgument:passTheSecondArgument:) andArguments:@[firstArgument, secondArgument]];
+ BOOL didInvoke = [NSInvocation SH_performInvocationOnTarget:self 
+                                                withSelector:@selector(passTheFirstArgument:passTheSecondArgument:) andArguments:@[firstArgument, secondArgument]];
   
   NSParameterAssert(didInvoke);
   NSParameterAssert([self.firstArgument  isEqualToString:firstArgument]);
