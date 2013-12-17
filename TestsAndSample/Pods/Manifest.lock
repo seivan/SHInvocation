@@ -1,0 +1,19 @@
+PODS:
+  - SHInvocation (0.9.0)
+  - SHTestCaseAdditions (1.4.1):
+    - SHTestCaseAdditions/XCTest
+  - SHTestCaseAdditions/XCTest (1.4.1)
+
+DEPENDENCIES:
+  - SHInvocation (from `../`)
+  - SHTestCaseAdditions
+
+EXTERNAL SOURCES:
+  SHInvocation:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SHInvocation: 8b41e15488128c766b5962d6dbc1a5fab6f2a741
+  SHTestCaseAdditions: ff32e10731f37effd08c254e538c3e7998f74921
+
+COCOAPODS: 0.28.0
