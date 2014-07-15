@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   name           = "SHInvocation"
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
-  version        = "0.9.2"
+  version        = "0.9.3"
   source_files   = "#{name}/**/*.{h,m}"
 
   s.name         = name
